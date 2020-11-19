@@ -1,0 +1,95 @@
+[core]
+class: CustomUnitMetadata
+price: 100
+maxHp: 1000
+mass: 9000
+techLevel: 1
+buildSpeed: 5s
+radius: 16
+isBio: false
+isBuilding: true
+constructionFootprint: -1, -1, 1, 1
+footprint: -1, -1, 1, 1
+softCollisionOnAll: 5
+explodeOnDeath: false
+hideScorchMark: true
+disableAllUnitCollisions: true
+maxTransportingUnits: 10
+transportUnitsBlockAirAndWaterUnits: false
+
+
+[graphics]
+total_frames: 1
+image: ../null.png
+image_back: ../base.png
+image_wreak: NONE
+
+[attack]
+canAttack: true
+canAttackFlyingUnits: true
+canAttackLandUnits:   true
+canAttackUnderwaterUnits: true
+turretSize: 0
+turretTurnSpeed: 1
+maxAttackRange: 2000
+shootDelay: 1
+showRangeUIGuide: true
+
+[effect_woosh]
+life: 10
+priority: low
+fadeOut: true
+alpha:1
+scaleFrom: 0
+scaleTo: 5
+attachedToUnit: true
+
+[action_transfer]
+addResources: setFlag=1
+price: 0
+buildSpeed: 2s
+text: Transfer
+description: -Transfer units to another portal with same color
+isVisible: if not self.hasFlag(id=1)
+pos: 1
+
+[hiddenAction_chkFlag]
+debugMessage: Flag 1 is on
+autoTrigger: if self.hasFlag(id=1)
+
+[attachment_target]
+setDrawLayerOnTop: true
+
+[turret_1]
+x: 0
+y: 0
+projectile: 1
+shoot_flame: CUSTOM:woosh
+canAttackCondition: if self.hasFlag(id=1)
+resourceUsage: unsetFlag=1
+limitingMinRange: 100
+image: ../pointy.png
+
+[projectile_1]
+#laserEffect: true
+instant: true
+directDamage: 0
+life: 99999
+speed: 5
+unloadUpToXUnitsFromSource: 1
+deflectionPower: -1
+targetGround: true
+targetGroundSpread:100
+
+[movement]
+movementType: NONE
+moveSpeed: 0
+moveAccelerationSpeed: 0
+moveDecelerationSpeed: 0
+maxTurnSpeed: 0
+turnAcceleration: 0
+
+
+
+
+
